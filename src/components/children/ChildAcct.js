@@ -112,7 +112,7 @@ class ChildAcct extends Component {
   };
 
   updateTime = () => {
-    if (this.state.timeRemaining > 0) {
+    if (this.state.timeRemaining > 0 && this.props.userDetails.hasAccess) {
       this.setState(prevState => ({
         timeRemaining: prevState.timeRemaining - 1,
         timerRunning: true,
