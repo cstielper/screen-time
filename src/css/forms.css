@@ -1,0 +1,70 @@
+form {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.form-message {
+  background: rgba(255, 255, 255, 0.9);
+  margin: 0 0 0.5rem;
+  padding: 1rem;
+}
+
+.form-message.error {
+  border: 1px solid var(--color_error);
+  color: var(--color_error);
+}
+
+label {
+  display: block;
+  padding: 0 0 0.25rem;
+  text-align: left;
+  font-size: 0.875em;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  font-size: 1.25em;
+  padding: 0.375em;
+  border: 0;
+  margin: 0 0 0.5rem;
+}
+
+input[type='submit'],
+button,
+.btn {
+  padding: 0.75rem 2rem;
+  margin: 0 0 0.5rem;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.25em;
+  font-weight: 700;
+  border: 0;
+  background: var(--color_brand_2);
+}
+
+input[type='submit'].secondary,
+button.secondary,
+.btn.secondary {
+  font-size: 0.8125em;
+  background: var(--color_brand_3);
+}
+
+input[type='submit'].tertiary,
+button.tertiary,
+.btn.tertiary {
+  font-size: 0.725em;
+  background: transparent;
+  color: var(--color_brand-2);
+}
+
+input[type='submit']:hover,
+input[type='submit']:focus,
+button:hover,
+button:focus,
+.btn:hover,
+.btn:focus {
+  cursor: pointer;
+}
