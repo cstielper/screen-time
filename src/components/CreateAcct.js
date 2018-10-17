@@ -33,7 +33,8 @@ class CreateAcct extends Component {
       email,
       password,
       passwordConfirm,
-      displayName,
+      firstName,
+      lastName,
       childID,
     } = this.state;
 
@@ -55,7 +56,8 @@ class CreateAcct extends Component {
           .then(user => {
             const usersRef = firebase.database().ref('users');
             const userDetails = {
-              name: displayName,
+              firstName: firstName,
+              lastName: lastName,
               email: user.user.email,
               level: 'child',
               hasAccess: false,
@@ -84,7 +86,8 @@ class CreateAcct extends Component {
               // Then, create a user in the Firebase DB with their auth id as the node
               .then(user => {
                 const userDetails = {
-                  name: displayName,
+                  firstName: firstName,
+                  lastName: lastName,
                   email: user.user.email,
                   level: 'parent',
                 };
@@ -128,13 +131,24 @@ class CreateAcct extends Component {
             </div>
           ) : null}
 
-          <label htmlFor="displayName" className="screen-reader-text">
-            * Name
+          <label htmlFor="firstName" className="screen-reader-text">
+            * First Name
           </label>
           <input
             type="text"
-            name="displayName"
-            placeholder="* Your Name"
+            name="firstName"
+            placeholder="* First Name"
+            onChange={this.updateUser}
+            required
+          />
+
+          <label htmlFor="lastName" className="screen-reader-text">
+            * Last Name
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="* Last Name"
             onChange={this.updateUser}
             required
           />

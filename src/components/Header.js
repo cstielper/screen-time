@@ -40,7 +40,7 @@ const HeaderWrapper = styled.header`
 const Header = props => {
   return (
     <HeaderWrapper>
-      <span className="username">{props.userDetails.name}</span>
+      <span className="username">{props.userDetails.firstName}</span>
       <button className="btn" onClick={props.deleteAcctModal}>
         <span className="screen-reader-text">Delete Account</span>
         <img src={deleteAcct} alt="Delete account" />

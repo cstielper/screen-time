@@ -146,7 +146,7 @@ class ChildDetail extends Component {
         {this.props.details ? (
           <Wrapper className={status ? 'active' : 'inactive'}>
             <div className="name-wrapper">
-              <span className="name">{this.props.details.name}</span>
+              <span className="name">{this.props.details.firstName}</span>
               <div className="time-left">
                 {formatTime(this.props.details.timeRemaining).map(time => (
                   <React.Fragment key={time}>

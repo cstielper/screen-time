@@ -48,11 +48,14 @@ class ParentAcct extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.addChild) {
-      setTimeout(() => {
-        this.childInput.current.focus();
-      }, 50);
-    }
+    // Focus the modal window for A11y
+    setTimeout(() => {
+      if (this.state.addChild) {
+        setTimeout(() => {
+          this.childInput.current.focus();
+        }, 50);
+      }
+    }, 50);
   }
 
   // UPDATE STATE AS USER ENTERS INFO INTO THE FORM
@@ -64,9 +67,6 @@ class ParentAcct extends Component {
   // ADD A CHILD
   addChild = e => {
     e.preventDefault();
-    setTimeout(() => {
-      this.childInput.current.focus();
-    }, 50);
 
     // Some variables we will need
     const { childID, children } = this.state;
