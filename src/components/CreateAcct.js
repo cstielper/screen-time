@@ -120,73 +120,75 @@ class CreateAcct extends Component {
 
   render() {
     return (
-      <form action="" ref={this.form} onSubmit={this.createAcct}>
-        {this.state.formErrors ? (
-          <div className="form-message error">
-            <span>{this.state.errorMessage}</span>
-          </div>
-        ) : null}
+      <React.Fragment>
+        <form action="" ref={this.form} onSubmit={this.createAcct}>
+          {this.state.formErrors ? (
+            <div className="form-message error">
+              <span>{this.state.errorMessage}</span>
+            </div>
+          ) : null}
 
-        <label htmlFor="displayName" className="screen-reader-text">
-          * Name
-        </label>
-        <input
-          type="text"
-          name="displayName"
-          placeholder="* Your Name"
-          onChange={this.updateUser}
-          required
-        />
+          <label htmlFor="displayName" className="screen-reader-text">
+            * Name
+          </label>
+          <input
+            type="text"
+            name="displayName"
+            placeholder="* Your Name"
+            onChange={this.updateUser}
+            required
+          />
 
-        <label htmlFor="email" className="screen-reader-text">
-          * Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          placeholder="* Email"
-          onChange={this.updateUser}
-          required
-        />
+          <label htmlFor="email" className="screen-reader-text">
+            * Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="* Email"
+            onChange={this.updateUser}
+            required
+          />
 
-        <label htmlFor="password" className="screen-reader-text">
-          * Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          placeholder="* Password"
-          onChange={this.updateUser}
-          required
-        />
+          <label htmlFor="password" className="screen-reader-text">
+            * Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="* Password"
+            onChange={this.updateUser}
+            required
+          />
 
-        <label htmlFor="passwordConfirm" className="screen-reader-text">
-          * Confirm Password
-        </label>
-        <input
-          type="password"
-          name="passwordConfirm"
-          placeholder="* Confirm Password"
-          onChange={this.updateUser}
-          required
-        />
+          <label htmlFor="passwordConfirm" className="screen-reader-text">
+            * Confirm Password
+          </label>
+          <input
+            type="password"
+            name="passwordConfirm"
+            placeholder="* Confirm Password"
+            onChange={this.updateUser}
+            required
+          />
 
-        <label htmlFor="childID" style={extraTop}>
-          To create a parent account, please enter a valid Child ID below:
-        </label>
-        <input
-          type="text"
-          name="childID"
-          placeholder="Child ID"
-          onChange={this.updateUser}
-        />
+          <label htmlFor="childID" style={extraTop}>
+            To create a parent account, please enter a valid Child ID below:
+          </label>
+          <input
+            type="text"
+            name="childID"
+            placeholder="Child ID"
+            onChange={this.updateUser}
+          />
 
-        <input type="submit" value="Create Account" className="btn" />
-        <br />
-        <button className="tertiary" onClick={this.props.cancelCreateAcct}>
-          Cancel
-        </button>
-      </form>
+          <input type="submit" value="Create Account" className="btn" />
+          <br />
+          <button className="tertiary" onClick={this.props.cancelCreateAcct}>
+            Cancel
+          </button>
+        </form>
+      </React.Fragment>
     );
   }
 }

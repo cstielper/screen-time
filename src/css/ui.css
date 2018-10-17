@@ -4,7 +4,7 @@
   --color_brand_1: #14f4d5;
   --color_brand_2: #0a7466;
   --color_brand_3: #f45714;
-  --color_brand_4: #0fb49d;
+  --color_brand_4: #20d5bc;
   --color_error: #f00;
 }
 
@@ -90,10 +90,10 @@ h1 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-family: 'Luckiest Guy', cursive;
-  font-size: 4em;
+  font-size: 3em;
   line-height: 0.875;
   color: #fff;
-  text-shadow: 4px 4px 0 #000;
+  text-shadow: 3px 3px 0 #000;
 }
 
 /* Media

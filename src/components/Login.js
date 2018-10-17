@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../Firebase';
+import tv from '../svgs/tv.svg';
 
 class Login extends Component {
   constructor(props) {
@@ -99,69 +100,73 @@ class Login extends Component {
   render() {
     const msgType = this.state.formErrors ? 'error' : 'msg';
     return (
-      <form
-        action=""
-        ref={this.form}
-        onSubmit={!this.state.lostPass ? this.signIn : this.sendPass}
-      >
-        {this.state.formMessage ? (
-          <div className={`form-message ${msgType}`}>
-            <span>{this.state.formMessage}</span>
-          </div>
-        ) : null}
+      <React.Fragment>
+        <img src={tv} alt="Television" className="bounce" />
+        <h1>Screen Time!</h1>
+        <form
+          action=""
+          ref={this.form}
+          onSubmit={!this.state.lostPass ? this.signIn : this.sendPass}
+        >
+          {this.state.formMessage ? (
+            <div className={`form-message ${msgType}`}>
+              <span>{this.state.formMessage}</span>
+            </div>
+          ) : null}
 
-        <label htmlFor="email" className="screen-reader-text">
-          * Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          placeholder="* Email"
-          onChange={this.updateUser}
-          required
-        />
+          <label htmlFor="email" className="screen-reader-text">
+            * Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="* Email"
+            onChange={this.updateUser}
+            required
+          />
 
-        {!this.state.lostPass ? (
-          <React.Fragment>
-            <label htmlFor="password" className="screen-reader-text">
-              * Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="* Password"
-              onChange={this.updateUser}
-              required
-            />
-          </React.Fragment>
-        ) : null}
+          {!this.state.lostPass ? (
+            <React.Fragment>
+              <label htmlFor="password" className="screen-reader-text">
+                * Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder="* Password"
+                onChange={this.updateUser}
+                required
+              />
+            </React.Fragment>
+          ) : null}
 
-        {!this.state.lostPass ? (
-          <input type="submit" value="Login" className="btn" />
-        ) : (
-          <input type="submit" value="Reset My Password" className="btn" />
-        )}
+          {!this.state.lostPass ? (
+            <input type="submit" value="Login" className="btn" />
+          ) : (
+            <input type="submit" value="Reset My Password" className="btn" />
+          )}
 
-        {!this.state.lostPass ? (
-          <React.Fragment>
-            <br />
-            <button className="tertiary" onClick={this.resetPass}>
-              Forgot Your Password?
-            </button>
-          </React.Fragment>
-        ) : null}
-        {this.state.lostPass ? (
-          <React.Fragment>
-            <br />
-            <button
-              className="tertiary"
-              onClick={() => this.setState({ lostPass: false })}
-            >
-              Cancel
-            </button>
-          </React.Fragment>
-        ) : null}
-      </form>
+          {!this.state.lostPass ? (
+            <React.Fragment>
+              <br />
+              <button className="tertiary" onClick={this.resetPass}>
+                Forgot Your Password?
+              </button>
+            </React.Fragment>
+          ) : null}
+          {this.state.lostPass ? (
+            <React.Fragment>
+              <br />
+              <button
+                className="tertiary"
+                onClick={() => this.setState({ lostPass: false })}
+              >
+                Cancel
+              </button>
+            </React.Fragment>
+          ) : null}
+        </form>
+      </React.Fragment>
     );
   }
 }

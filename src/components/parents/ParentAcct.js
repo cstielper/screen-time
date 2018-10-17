@@ -11,12 +11,13 @@ const AddChildForm = styled.form`
 
 const btnAddChildStyles = {
   marginTop: '1rem',
+  marginBottom: '2rem',
 };
 
 class ParentAcct extends Component {
   constructor(props) {
     super(props);
-    this.form = React.createRef();
+    this.childInput = React.createRef();
     this.state = {
       children: {},
       addChild: false,
@@ -46,6 +47,14 @@ class ParentAcct extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.addChild) {
+      setTimeout(() => {
+        this.childInput.current.focus();
+      }, 50);
+    }
+  }
+
   // UPDATE STATE AS USER ENTERS INFO INTO THE FORM
   updateUser = e => {
     const value = e.target.value;
@@ -55,6 +64,9 @@ class ParentAcct extends Component {
   // ADD A CHILD
   addChild = e => {
     e.preventDefault();
+    setTimeout(() => {
+      this.childInput.current.focus();
+    }, 50);
 
     // Some variables we will need
     const { childID, children } = this.state;
@@ -124,8 +136,10 @@ class ParentAcct extends Component {
         {this.state.addChild ? (
           <AddChildForm
             action=""
-            className="form-add-child modal"
+            className="form-add-child modal fadeIn"
             onSubmit={this.addChild}
+            role="dialog"
+            ref={this.form}
           >
             {this.state.formMessage ? (
               <div className={`form-message ${msgType}`}>
@@ -136,8 +150,9 @@ class ParentAcct extends Component {
             <input
               type="text"
               name="childID"
-              placeholder="Enter child ID"
+              placeholder="Enter Child ID"
               onChange={this.updateUser}
+              ref={this.childInput}
             />
             <input type="submit" value="Create Account" className="btn" />
             <button

@@ -5,6 +5,7 @@ import deleteAcct from '../svgs/deleteAcct.svg';
 
 const HeaderWrapper = styled.header`
   height: 10vh;
+  min-height: 4rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -13,22 +14,25 @@ const HeaderWrapper = styled.header`
   border-bottom: 3px solid #fff;
 
   .username {
-    font-family: 'Luckiest Guy', cursive;
     margin-right: auto;
     color: #fff;
-    font-size: 1.25rem;
-    letter-spacing: 0.03125em;
     line-height: 1;
     text-align: left;
+    font-weight: 700;
   }
 
   .btn {
     padding: 0;
     margin-left: 0.25rem;
+    margin-bottom: 0;
+
+    &:focus {
+      outline: 1px dotted #fff;
+    }
 
     img {
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
     }
   }
 `;

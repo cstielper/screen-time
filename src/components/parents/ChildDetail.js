@@ -13,13 +13,8 @@ const Wrapper = styled.div`
   padding: 1.125rem 1rem;
   text-align: left;
   border-bottom: 1px solid #fff;
-
-  &:nth-child(even) {
-  }
-
-  &:last-of-type {
-    margin-bottom: 1.75rem;
-  }
+  background: var(--color_brand_4);
+  box-shadow: inset 0 -5px 8px -8px rgba(0, 0, 0, 1);
 
   .controls {
     width: 40%;
@@ -28,8 +23,8 @@ const Wrapper = styled.div`
     justify-content: flex-end;
 
     button {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2rem;
+      height: 2rem;
       padding: 0;
       margin: 0.0625rem 0 0.0625rem 0.125rem;
       transition: opacity 0.25s;
@@ -47,6 +42,10 @@ const Wrapper = styled.div`
         width: 1.75rem;
         height: 1.75rem;
       }
+
+      &:focus {
+        outline: 1px dotted #000;
+      }
     }
   }
 
@@ -62,7 +61,7 @@ const Wrapper = styled.div`
       font-size: 1.75em;
       font-family: 'Luckiest Guy', cursive;
       color: #fff;
-      text-shadow: 3px 3px 0 rgba(0, 0, 0, 1);
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 1);
     }
   }
 

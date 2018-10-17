@@ -8,9 +8,8 @@ const Wrapper = styled.div`
   max-width: 30em;
   margin: -5rem auto 0;
 
-  h1 {
-    font-size: 2.875em;
-    text-shadow: 3px 3px 0 #000;
+  h1.out-of-time {
+    font-size: 4rem;
   }
 
   input:read-only {
@@ -27,7 +26,7 @@ const Wrapper = styled.div`
     span {
       display: inline-block;
       padding: 0.625rem;
-      font-size: 2em;
+      font-size: 1.5em;
 
       &:last-of-type {
         display: none;
@@ -40,7 +39,7 @@ const Wrapper = styled.div`
   }
 
   .btn-alt {
-    width: 50vw;
+    width: 53vw;
     max-width: 20rem;
     background: var(--color_brand_3);
   }
@@ -62,17 +61,6 @@ class ChildAcct extends Component {
       .ref(`users/${uid}/timerRunning`)
       .set(false);
   }
-
-  copyToClipboard = e => {
-    e.preventDefault();
-    this.uidInput.current.select();
-    document.execCommand('copy');
-    this.setState({
-      copySuccess:
-        'Your ID has been copied. Text or email it to your parent so that they can add you to their account.',
-    });
-    this.modalCountdown();
-  };
 
   // REMOVE THE MODAL WINDOW AFTER 10 SECONDS
   modalCountdown = () => {
@@ -146,20 +134,12 @@ class ChildAcct extends Component {
               Send these numbers and letters to your parent, so that they can
               add you to their account:
             </p>
-            <form action="">
-              <input
-                type="text"
-                value={this.props.user.uid}
-                ref={this.uidInput}
-                readOnly
-              />
-              <button className="btn-alt" onClick={this.copyToClipboard}>
-                Copy
-              </button>
-              {this.state.copySuccess ? (
-                <span className="modal">{this.state.copySuccess}</span>
-              ) : null}
-            </form>
+            <input
+              type="text"
+              value={this.props.user.uid}
+              ref={this.uidInput}
+              readOnly
+            />
             <p>
               If you've used this app before, you will need to ask your parents
               to re-enable your account to keep using it.
@@ -169,7 +149,7 @@ class ChildAcct extends Component {
           <React.Fragment>
             {this.props.userDetails.timeRemaining > 0 ? (
               <div>
-                <h2>Time Remaining</h2>
+                <h1>Time Remaining</h1>
                 <div className="time-left">
                   {formatTime(this.props.userDetails.timeRemaining).map(
                     time => (
@@ -191,8 +171,9 @@ class ChildAcct extends Component {
               </div>
             ) : (
               <div>
-                <h2>Oh no, you've used all of your screen time!</h2>
-                <p>You'll have to ask your parents for more.</p>
+                <h1 className="out-of-time">Oh No!</h1>
+                <h2>It looks like you've used all of your screen time.</h2>
+                <p>You'll have to ask your parents to add more.</p>
               </div>
             )}
           </React.Fragment>

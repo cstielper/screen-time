@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import tv from './svgs/tv.svg';
 import firebase from './Firebase';
 import Authenticate from './components/Authenticate';
 import Header from './components/Header';
@@ -9,6 +8,7 @@ import ParentAcct from './components/parents/ParentAcct';
 class App extends Component {
   constructor() {
     super();
+    this.modal = React.createRef();
     this.state = {
       user: null,
       userDetails: null,
@@ -76,6 +76,9 @@ class App extends Component {
   // This gets passed to the Header component as a prop
   deleteAcctModal = () => {
     this.setState({ deleteAcctModal: true });
+    setTimeout(() => {
+      this.modal.current.lastChild[0].focus();
+    }, 50);
   };
 
   // DELETE ACCT AT FIREBASE
@@ -188,8 +191,6 @@ class App extends Component {
         {/* If there is a message from deleting an account, display it */}
         {!this.state.user ? (
           <div className="authenticate">
-            <img src={tv} alt="Television" className="bounce" />
-            <h1>Screen Time!</h1>
             {/* TODO: Need to remove this if user deletes an acct and then immediately clicks to create a new acct */}
             {this.state.acctDeleteMsg ? (
               <div className="form-message error">
@@ -220,7 +221,7 @@ class App extends Component {
 
         {/* Display modal to confirm acct deletion */}
         {this.state.deleteAcctModal ? (
-          <div className="modal fadeIn">
+          <div className="modal fadeIn" role="dialog" ref={this.modal}>
             <h2>Are You Sure You Want to Delete Your Account?</h2>
             <p>
               Removing your account will delete all of its data. If you are a
@@ -243,7 +244,7 @@ class App extends Component {
                   <span>{this.state.formMessage.message}</span>
                 </div>
               ) : null}
-              <input type="submit" value="Delete My Account" />
+              <input type="submit" value="Delete Account" />
               <br />
               <button
                 className="tertiary"

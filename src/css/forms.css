@@ -18,7 +18,7 @@ label {
   display: block;
   padding: 0 0 0.25rem;
   text-align: left;
-  font-size: 0.875em;
+  font-size: 0.8125em;
 }
 
 input[type='text'],
@@ -29,6 +29,14 @@ input[type='password'] {
   padding: 0.375em;
   border: 0;
   margin: 0 0 0.5rem;
+  color: #777;
+  border: 1px solid #fff;
+}
+
+input[type='text']:required,
+input[type='email']:required,
+input[type='password']:required {
+  box-shadow: none;
 }
 
 input[type='submit'],
@@ -43,6 +51,14 @@ button,
   font-weight: 700;
   border: 0;
   background: var(--color_brand_2);
+  transition: text-shadow 0.125s;
+}
+
+input[type='submit']::-moz-focus-inner,
+button::-moz-focus-inner,
+.btn::-moz-focus-inner {
+  outline: 0;
+  border: 0;
 }
 
 input[type='submit'].secondary,
@@ -58,6 +74,46 @@ button.tertiary,
   font-size: 0.725em;
   background: transparent;
   color: var(--color_brand-2);
+}
+
+/** Hover/Focus **/
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus {
+  outline: 1px dotted #000;
+  color: #333;
+}
+
+input[type='submit']:hover,
+button:hover,
+.btn:hover,
+input[type='submit']:focus,
+button:focus,
+.btn:focus {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  outline: 0;
+}
+
+input[type='submit'].secondary:hover,
+button.secondary:hover,
+.btn.secondary:hover,
+input[type='submit'].secondary:focus,
+button.secondary:focus,
+.btn.secondary:focus {
+  text-shadow: 1px 2px 0 rgba(0, 0, 0, 1);
+}
+
+input[type='submit'].tertiary:hover,
+button.tertiary:hover,
+.btn.tertiary:hover {
+  text-shadow: none;
+}
+
+input[type='submit'].tertiary:focus,
+button.tertiary:focus,
+.btn.tertiary:focus {
+  text-shadow: none;
+  outline: 1px dotted #000;
 }
 
 input[type='submit']:hover,
